@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Assignment 1</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic|Raleway:400,700|Play:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<style>
+		.main {
+			font-family: 'Exo' 'sans-serif';
+			font-size: 18px;
+		}
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 70px;
+		}
+		#footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 70px;
+		  background-color: #222222;
+		  margin-top: 20px;
+		}
+		a {
+			margin-top:20px;
+		}
+		h3 {
+			font-family: 'Raleway' 'sans-serif';
+		}
+		img {
+		}
+		.text-muted {
+			font-family: 'Raleway', 'sans-serif';
+			font-size: 12px;
+			text-align: center;
+		}
+/* 
+			font-family: 'Exo' 'sans-serif';
+			font-family: 'Raleway' 'sans-serif';
+ */
+		</style>
+	</head>
+
+	<body style="background-image: url('img/gray_jean.png') ;background-repeat: repeat">
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Saurabh Kulkarni</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a class="active" href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="margin-top:80px; padding-bottom: 20px;">
+			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Assignment 01</h1>
+			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:110px; font-family: 'Exo' 'sans-serif'">
+				<h3> EAE 6320: Game Engineering 2</h3>
+				<p align="justify" style="font-size: 15px;">After a semester of building the core systems in Game Engineering 1, now we will focus on asset pipeline and some of graphics systems in a game engine. I personally look forward to this class so I can learn more about how the graphics system works and how some binary data is rendered to images on the screen.</p>
+				<h3>Assignment 01</h3>
+				<div class="row">
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							The goal of the first assignment was to create a basic structure for the Visual Studio solution working and use it for the rest of the class. This class we will be using Git, which is a new version control system for me. So and added requirement for this class for me was to understand the basic operations in Git.<br />
+							The final objective was to draw a triangle to draw a triangle using OpenGL and Direct3D.<br />
+							The image is for Direct3D. If the project setup is done correctly, the OpenGL output is the same.
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							<img width=300px; src='Assignment01/output.GIF' />
+						</p>
+					</div>
+				</div>
+				<h3>Directory Structure</h3>
+				<p align="justify" style="font-size: 15px;">
+					We separate the various files in the Visual Studio solution in different folders. Each folder has its own purpose. <br /><br />
+				</p>
+				<div class="row">
+					<div class="col-md-6">
+					<p align="justify" style="font-size: 15px;">
+						&nbsp;&nbsp;&nbsp;&nbsp;We add all the authored assets and shaders in the assets folder. All the code, which are basically various Visual Studio projects is contained in the code folder. The last folder is the temp folder which contains all the temporary files which are not needed to be pushed to the repository. They can be generated either by the version control software or Visual Studio. These files include intermediates, executables and game data. This reduces the size of the folder to upload to version control significantly. <br /><br />
+						&nbsp;&nbsp;&nbsp;&nbsp;The assets are separated form code so as to separate the code from the graphics stuff. The artists know where they need to add the assets without actually modifying the project. You can modify assets without changing any code. And, most importantly, the assets need not be built every time anyone makes a small change in the code.<br /><br />
+						&nbsp;&nbsp;&nbsp;&nbsp;We separate game code and engine code for the sake of code isolation. We should be able to develop an engine for multiple games without any game specific code. We have started separating game and engine code since the start of engine development course. <br /><br />
+					</p>
+					</div>
+					<div class="col-md-3">
+						<img src='Assignment01/directstruct.GIF' />
+					</div>
+					<div class="col-md-3">
+						<img src='Assignment01/solnstruct.GIF' />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<blockquote class="blockquote" style="font-size: 15px;">
+							<h3>Time Estimate</h3>
+							<p align="justify" style="font-size: 15px;">
+								Reading: 2 hours<br />
+								Solution Setup: 2 hours<br />
+								Coding: 30 min<br />
+								Debugging and Fixes: 1 hour<br />
+								Writeup: 1 hour<br />
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6">
+						<blockquote class="blockquote-reverse" style="font-size: 15px;">
+							<h3>Download Links</h3>
+							<a class="btn btn-default" href = 'Assignment01/Assignment01Direct3D.zip'>
+								<span class="glyphicon glyphicon-download"></span> Download Direct3D
+							</a>
+							<br />
+							<a class="btn btn-default" href = 'Assignment01/Assignment01OpenGL.zip'>
+								<span class="glyphicon glyphicon-download"></span> Download OpenGL
+							</a>
+						</blockquote>
+					</div>
+				</div>
+				<br /><br /><br /><br />
+			</div>
+		</div><!-- /.container -->
+
+		<div id="footer">
+			<div class="container" style="margin-top:8px;">
+				<p class="text-muted">Hosted on <a href="http://www.github.com">GitHub</a><br>
+				Site designed using <a href="http://www.getbootstrap.com">Twitter Bootstrap</a> and <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlighter</a><br>
+				Best Viewed in <a href="http://www.google.com/chrome">Google Chrome</a>
+				</p>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
