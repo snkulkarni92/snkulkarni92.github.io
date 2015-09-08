@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Assignment 2</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic|Raleway:400,700|Play:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<style>
+		.main {
+			font-family: 'Exo' 'sans-serif';
+			font-size: 18px;
+		}
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 70px;
+		}
+		#footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 70px;
+		  background-color: #222222;
+		  margin-top: 20px;
+		}
+		a {
+			margin-top:20px;
+		}
+		h3 {
+			font-family: 'Raleway' 'sans-serif';
+		}
+		img {
+		}
+		.text-muted {
+			font-family: 'Raleway', 'sans-serif';
+			font-size: 12px;
+			text-align: center;
+		}
+/* 
+			font-family: 'Exo' 'sans-serif';
+			font-family: 'Raleway' 'sans-serif';
+ */
+		</style>
+	</head>
+
+	<body style="background-image: url('img/gray_jean.png') ;background-repeat: repeat">
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Saurabh Kulkarni</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a class="active" href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="margin-top:80px; padding-bottom: 20px;">
+			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Assignment 02</h1>
+			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:50px; font-family: 'Exo' 'sans-serif'">
+				<h3>Assignment 02</h3>
+				<div class="row">
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							The assignment consisted of two parts; integrating Lua into the project and drawing a second triangle in order to form a square. We already had used Lua in the past, in EAE 6310, to process input for the game objects in the engine. Now we use it more extensively in our build pipeline. Currently Lua replaces some of the C++ code from our Asset Builder project, and calls some predefined C functions form the project. <br />
+							The image shows the desired result in Direct3D. Even though the output is similar for OpenGL, the way we represent vertices and primitives (triangles) is completely opposite. Direct3D follows the Left hand orientation while OpenGL follows the Right hand orientation. Previously we had a single triangle, but now we have two triangles making a square (actually a rectangle depending on the resolution). I was stuck at a point in adding new vertices for the second triangle in OpenGL. I did add new values to the buffer in the code but missed the line where we write into the internal buffer. This mistake stopped me from getting the second triangle rendered on the screen. This forced me to read through most of the code in both Direct3D and OpenGL files. This will now help me in the next assignment.<br />
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							<img width=400px; src='Assignment02/output.gif' />
+						</p>
+					</div>
+				</div>
+				<h3>BuildAssets.lua</h3>
+				<div class="row">
+					<div class="col-md-6">
+					<p align="justify" style="font-size: 15px;">
+						The Lua script builds all the authored assets in the Assets folder and copies them to the data folder in the Game directory. The script is accessed from the ScriptDir macro. So we create a new folder called Scripts in the main directory. In Visual Studio, instead of adding it to a specific project, I created a separate solution folder. I do this because we will change the way we are building assets later in the development process. I shouldn’t have to reload any project for making changes in a script which is supposed to be independent of the engine. Also it is better to have all the scripts in a central point, instead of having them separated in different projects. 
+					</p>
+					</div>
+					<div class="col-md-3">
+						<img height=250px src='Assignment02/solnstruct.gif' />
+					</div>
+					<div class="col-md-3">
+						<img src='Assignment02/directstruct.gif' />
+					</div>
+				</div>
+				<h3>Building Assets</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<p align="justify" style="font-size: 15px;">
+							<ul>
+								<li>The environment variables AuthoredAssetsDir and BuiltAssetsDir are computed, by expanding the corresponding macros in the solution property pages.</li>
+								<li>Some processing is done to convert from source (Authored Assets) to target (Built Assets). Currently we are just simply copying files from one to the other.</li>
+								<li>The source files are in a format which are easy for authoring.</li>
+								<li>The target files are in a format which is useful for real time rendering.</li>
+							</ul>
+						</p>
+					</div>
+				</div>
+				<h3>Role of AssetBuilder and Lua script</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<p align="justify" style="font-size: 15px;">
+							<ul>
+								<li>The Lua file’s goal is to build assets as per the process above. It contains the code to do so.</li>
+								<li>The Asset Builder project, with help of static library Lua.lib, aims to interpret the script file and execute it. It also contains some helper functions required in the BuildAssets.lua file.</li>
+								<li>After building the project, AssetBuilder.exe is created.</li>
+								<li>Then BuildAssets project executes the created exe file in its custom build step.</li>
+							</ul>
+						</p>
+					</div>
+				</div>
+				<h3>Lua</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<p align="justify" style="font-size: 15px;">
+							Some of the strengths of Lua as a scripting language are:<br />
+							<ul>
+								<li>Small code base and a small library.</li>
+								<li>Compiled on anything with a ANSI C compiler.</li>
+								<li>Fast as compared to other scripting languages.</li>
+								<li>Embedded and Extensible language with easy interface to/from C/C++.</li>
+								<li>Well Documented.</li>
+								<li>Simple Syntax.</li>
+							</ul>
+						</p>
+					</div>
+				</div>
+				<h3>Lua in EAE6320</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<p align="justify" style="font-size: 15px;">
+							What Lua provides to the game can’t be offered by any other scripting language. We use Lua in this course so that we can learn more about it and its usage. Lua is popular in medium sized games as the advantages listed above can be used to the full extent. Smaller games may not require the use of a separate scripting language and all the work can be handled by the primary coding languages. Bigger games and studios can afford scripting languages which use CPU and memory more extensively and can do much advanced things than what Lua can.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<blockquote class="blockquote" style="font-size: 15px;">
+							<h3>Time Estimate</h3>
+							<p align="justify" style="font-size: 15px;">
+								Reading: 1 hours<br />
+								Coding: 3 hours<br />
+								Testing and Fixes: 1 hour<br />
+								Writeup: 1 hour<br />
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6">
+						<blockquote class="blockquote-reverse" style="font-size: 15px;">
+							<h3>Download Links</h3>
+							<a class="btn btn-default" href = 'Assignment02/Assignment02Direct3D.zip'>
+								<span class="glyphicon glyphicon-download"></span> Download Direct3D
+							</a>
+							<br />
+							<a class="btn btn-default" href = 'Assignment02/Assignment02OpenGL.zip'>
+								<span class="glyphicon glyphicon-download"></span> Download OpenGL
+							</a>
+						</blockquote>
+					</div>
+				</div>
+				<br /><br /><br /><br />
+			</div>
+		</div><!-- /.container -->
+
+		<div id="footer">
+			<div class="container" style="margin-top:8px;">
+				<p class="text-muted">Hosted on <a href="http://www.github.com">GitHub</a><br>
+				Site designed using <a href="http://www.getbootstrap.com">Twitter Bootstrap</a> and <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlighter</a><br>
+				Best Viewed in <a href="http://www.google.com/chrome">Google Chrome</a>
+				</p>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
