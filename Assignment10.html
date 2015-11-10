@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Assignment 10</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic|Raleway:400,700|Play:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<style>
+		.main {
+			font-family: 'Exo' 'sans-serif';
+			font-size: 18px;
+		}
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 70px;
+		}
+		#footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 70px;
+		  background-color: #222222;
+		  margin-top: 20px;
+		}
+		a {
+			margin-top:20px;
+		}
+		h3 {
+			font-family: 'Raleway' 'sans-serif';
+		}
+		img {
+		}
+		.text-muted {
+			font-family: 'Raleway', 'sans-serif';
+			font-size: 12px;
+			text-align: center;
+		}
+/* 
+			font-family: 'Exo' 'sans-serif';
+			font-family: 'Raleway' 'sans-serif';
+ */
+		</style>
+	</head>
+
+	<body style="background-image: url('img/old_moon.png') ;background-repeat: repeat">
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">Saurabh Kulkarni</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a class="active" href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="margin-top:80px; padding-bottom: 20px;">
+			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Assignment 10</h1>
+			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:50px; padding-left:60px; padding-right: 60px; font-family: 'Exo' 'sans-serif'">
+				<div class="row">
+					<div class="col-md-6">
+						<h3>Assignment 10</h3>
+						<p align="justify" style="font-size: 15px;">
+							This assignment we finally changed the colorful 2D objects into colorful 3D objects. We also added the concept of camera so that we can change the perspective of the game world which we view. To make this possible and visibly believable, we had to make a series of changes to the code. Although there were mostly small changes, I will explain more of the high level concepts involved in the process. You can see the output of the assignment to the right. It is something extra than the cube required by the assignment, it is a hexagonal pyramid, with the bottom face being a regular hexagon with the colors of the color palette.
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							<img src="Assignment10/output.gif" width = 100% />
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Transformation Matrices</h3>
+						<ol>
+							<h4><li>Local To World</li></h4>
+							<p align="justify" style="font-size: 15px;">
+								All the objects which we author are in a neutral position, i.e. centered around the origin and the bottom face on the XZ plane. If we populate our game world with all these objects, all the objects would be at the origin. To move them, we use the Local-To-World transformation matrix to move those objects in relation to the actual location in the game world. This is calculated on basis of the object&rsquo;s position and the orientation. <br />
+								<code>cMatrix_transformation(cQuaternion i_orientation, cVector i_position);</code>
+							</p>
+							<h4><li>World To View</li></h4>
+							<p align="justify" style="font-size: 15px;">
+								If we display the objects as is in the game world, we would only see some of the objects and in a static, constant view. But we want to look around. We introduce the concept of a camera. Initially, without the matrix, we can assume the camera to be positioned at the origin and pointed towards positive Z. To move the perspective from the world space, we use the World-To-View transformation matrix. It is calculated with the camera&rsquo;s position and its orientation. <br />
+								<code>CreateWorldToViewTransform( const cQuaternion& i_cameraOrientation, const cVector& i_cameraPosition )</code>
+							</p>
+							<h4><li>View To Screen</li></h4>
+							<p align="justify" style="font-size: 15px;">
+								Till now we have only considered what happens in the virtual game world. Now we have to consider what happens when we start displaying the world on a window on the screen. In the game world, moving a unit in any direction is the same distance. But when drawing on a screen, the width and height of the window might not be equal. Hence we introduce the concept of Aspect Ratio. This normalizes all the distances in different axes with this ratio. Popular aspect ratios are 4:3 (800x600, 1024x768, 1280x960), 16:9(1920x1080) and 14:9(1400x900). Also we don&rsq;t need to display all the objects behind the camera or too far away from the camera. So we use the concept of near and far plane. Anything between the near plane and the far plane will be rendered. For all this, we use the View-To-Screen transformation matrix. It is calculated as follows:<br />
+								<code>CreateViewToScreenTransform( const float i_fieldOfView_y, const float i_aspectRatio, const float i_z_nearPlane, const float i_z_farPlane )</code>
+							</p>
+						</ol>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h3>Depth Buffer</h3>
+						<p align="justify" style="font-size: 15px;">
+							A common algorithm in rendering is the Painter’s Algorithm. It states that the object in the back of the scene should be rendered first. This algorithm would cause some problems, if the condition in the image is satisfied. If we draw the plane first, the intersection will not occur and the pyramid will be on top of the plane, which is undesirable. This is remedied by the Z buffer aka Depth Buffer. It is series of 8, 16, 24 or 32 bit values, for each of the pixels on the screen. Every time a pixel is processed, its Z coordinate, or its depth, is stored in this buffer. If we want to draw any pixel on the same X and Y coordinates, if the new depth is less than the stored depth, then the pixel is redrawn. These Z coordinates are rescaled to be stored in the range 0 to 1. Since, 1 is the farthest, if we clear the depth buffer to 1, any pixel which is checked for the first time, will pass the test and will be drawn.
+						</p>
+					</div>
+					<div class="col-md-6">
+						<img src="Assignment10/depth.gif" width = 100% />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Z values in Mesh</h3>
+						<p align="justify" style="font-size: 15px;">
+							Adding an extra coordinate in the text mesh file is easy. While reading, from the binary file, now the size of sVertex array is 16 bytes. So the 4 bytes from offset 8, at every 16 byte interval for number of vertices is the newly added Z value. All the Z values are highlighted in the hex image. The first set of images is the floor mesh. The next set of images is the pyramid mesh file.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h4>Plane Human Readable File</h4>
+						<img src="Assignment10/phr.gif" width = 60% />
+					</div>
+					<div class="col-md-6">
+						<h4>Plane Binary File</h4>
+						<img src="Assignment10/pb.gif" width = 100% />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h4>Pyramid Human Readable File</h4>
+						<img src="Assignment10/ohr.gif" width = 60% />
+					</div>
+					<div class="col-md-6">
+						<h4>Pyramid Binary File</h4>
+						<img src="Assignment10/ob.gif" width = 100% />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Camera</h3>
+						<p align="justify" style="font-size: 15px;">
+							I have added Camera class in the Core Engine project:
+							<pre>
+class Camera
+{
+public:
+	Math::cVector Position;
+	Math::cQuaternion Orientation;
+	float AspectRatio;
+	Camera() {}
+};
+							</pre>
+							<p align="justify" style="font-size: 15px;">
+							An instance of the Camera is created in Game. It stores the position, orientation and the aspect ratio. These values are passed to the SetTransformations function of the Renderable in the Graphics project, in order to calculate the matrices. The relevant code can be seen below: <br />
+							<code>void SetTransformations(Math::cVector i_Position, Math::cQuaternion i_Orientation, <br />Math::cVector i_CameraPosition, Math::cQuaternion i_CameraOrientation, float AspectRatio);</code></br />
+							I planned to add the complete first person camera, with being able to look around. But my inexperience with Quaternions, caused me to not to finish the looking around part. So now you can move the camera around but not change the orientation. Hopefully, by the next assignment, I would have a better grasp of Quaternions.
+
+						</p>
+					</div>
+				</div>
+				<!-- <div class="row">
+					<div class="col-md-12">
+						<h3></h3>
+						<p align="justify" style="font-size: 15px;">
+							
+						</p>
+					</div>
+				</div> -->
+				<!-- <div class="row">
+					<div class="col-md-6">
+						<h3></h3>
+						<p align="justify" style="font-size: 15px;">
+							
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							
+						</p>
+					</div>
+				</div> -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Controls</h3>
+						<ul style="font-size:15px;">
+							<li>Use the <span class="glyphicon glyphicon-arrow-left"></span><span class="glyphicon glyphicon-arrow-up"></span><span class="glyphicon glyphicon-arrow-right"></span><span class="glyphicon glyphicon-arrow-down"></span> (Arrow keys) to move the camera on XZ plane.</li>
+							<li>Use <kbd>W</kbd>, <kbd>A</kbd>, <kbd>S</kbd> and <kbd>D</kbd> to move the pyramid on the XY plane.</li>
+							<li>Press <kbd>Q</kbd> and <kbd>E</kbd> to rotate the pyramid counter-clockwise or clockwise respectively.</li>
+							<li>Press <kbd>ESC</kbd> to exit the game.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<blockquote class="blockquote" style="font-size: 15px;">
+							<h3>Time Estimate</h3>
+							<p align="justify" style="font-size: 15px;">
+								Reading: 1 hour<br />
+								Coding: 5 hours<br />
+								Debugging: 1 hour<br />
+								Writeup: 1 hour<br />
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6">
+						<blockquote class="blockquote-reverse" style="font-size: 15px;">
+							<h3>Download Links</h3>
+							<a class="btn btn-default" href = 'Assignment10/Assignment10Direct3D.zip'>
+								<span class="glyphicon glyphicon-download"></span> Download Direct3D
+							</a>
+							<br />
+							<a class="btn btn-default" href = 'Assignment10/Assignment10OpenGL.zip'>
+								<span class="glyphicon glyphicon-download"></span> Download OpenGL
+							</a>
+						</blockquote>
+					</div>
+				</div>
+				<br /><br /><br /><br />
+			</div>
+		</div><!-- /.container -->
+
+		<div id="footer">
+			<div class="container" style="margin-top:8px;">
+				<p class="text-muted">Hosted on <a href="http://www.github.com">GitHub</a><br>
+				Site designed using <a href="http://www.getbootstrap.com">Twitter Bootstrap</a> and <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlighter</a><br>
+				Best Viewed in <a href="http://www.google.com/chrome">Google Chrome</a>
+				</p>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
