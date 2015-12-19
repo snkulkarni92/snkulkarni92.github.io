@@ -75,141 +75,150 @@
 			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Final</h1>
 			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:50px; padding-left:60px; padding-right: 60px; font-family: 'Exo' 'sans-serif'">
 				<div class="row">
-					<div class="col-md-12">
-						<h3>Final</h3>
+					<div class="col-md-6">
+						<h3>Final!!</h3>
 						<p align="justify" style="font-size: 15px;">
-							This assignment is the penultimate assignment for the class EAE6320. For this one, we had to create textures to put on the objects in our scene, to make them pretty. Textures are the graphics term for an image. How they work will be explained later. For now compare the two screenshots, from Direct3D and OpenGL. They are noticably different. Direct3D is more sharp while OpenGL is smooth.
+							This is the final assignment for the class of EAE6320! Using all the things learnt from the class over the last semester, I created the game of chess (almost!). This version is a two player game, with shared controls on the keyboard. Granted that this is not a full game, I still have a sense of achivement by looking at the effort required to build the game. Here is a screenshot of an aggressive queen play!
 						</p>
+					</div>
+					<div class="col-md-6">
+						<img src="AssignmentFinal/output.gif" width = 100% />
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<h4>Direct3D</h4>
-						<p align="justify" style="font-size: 15px;">
-							<img src="Assignment13/output1.gif" width = 100% />
-						</p>
-					</div>
-					<div class="col-md-6">
-						<h4>OpenGL</h4>
-						<p align="justify" style="font-size: 15px;">
-							<img src="Assignment13/output2.gif" width = 100% />
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h3>Textures</h3>
-						<p align="justify" style="font-size: 15px;">
-							Textures are an extension to the concept of Materials. Adding a texture is like pasting a wallpaper over a wall, the wallpaper being the texture, wall being the mesh and the paint on the wall being the material. Texture is an image which is wrapped on a mesh, to change its look. On disk, textures are basically images in .png or .jpf format. You can open them using an image viewer, and edit them using an image editor. THe magic of putting a texture on a mesh happens in the mesh itself. Each mesh has a set of 2 values called texture co-ordinates. This co-ordinates map the realation between the image and the corresponding vertex on the mesh. When rendering a mesh, the graphics card, refers to the point on the texture file pointed by the texture co-ordinates in the vertex. This color is then drawn on to the screen. In this way, you can make a mesh look pretty without having to change the individual vertex colors.
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<h3>Linking with Materials</h3>
-						<p align="justify" style="font-size: 15px;">
-							Each material is associated with at least one texture. To use the texture in the shader code, it requires a Sampler ID along with the texture file. These two pieces of data are stored in the material file. The binary file as shown alongside, contains the two strings. First string is the Sampler ID uniform name in the shader, and the second is the relative path to the texture file. <br />
-							While running, the code looks for the uniform with Sampler ID name in the shader code. Different implementations are shown below.<br />
-							<h4>Direct3D</h4><br />
-							<code>
-							SamplerID Effect::GetSamplerID(const char * i_Name)	{<br />
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UniformHandle handle = fragmentShaderConstantTable->GetConstantByName(NULL, i_Name);<br />
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return static_cast<SamplerID>(fragmentShaderConstantTable->GetSamplerIndex(handle));<br />
-							}<br />
-							</code>
-							<h4>OpenGL</h4><br />
-							<code>
-							SamplerID Effect::GetSamplerID(const char * i_Name) {<br />
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return glGetUniformLocation(s_programId, i_Name);<br />
-							}<br />
-							</code>
-						</p>
-					</div>
-					<div class="col-md-6">
-						<p align="justify" style="font-size: 15px;">
-							<img src="Assignment13/bintex.gif" width = 100% />
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h3>Texture in code</h3>
-						<p align="justify" style="font-size: 15px;">
-							I decided to create the Texture as a class, since all the other componenets are classes as well. Making a class is always better in my opinion, as it results in a easy expansion of functionalities without having to refactor the code. And john-Paul did mention about us needing multiple textures next class. Using a class is easy to expand upon, by creating an array of texture objects. Also, OpenGL requires a unique ID for every texture. This is easily achieved with the use of a static variable.
-							<pre>
-class Texture
-{
-#if defined EAE6320_PLATFORM_GL
-	GLuint m_Texture;
-	GLint m_SamplerID;
-	static uint8_t s_Count;
-	uint8_t m_TextureUnit;
-#elif defined EAE6320_PLATFORM_D3D
-	IDirect3DTexture9 * m_Texture;
-	DWORD m_SamplerID;
-#endif //Platform Check
-
-public:
-	Texture() {}
-	bool LoadTexture(const char * path, SamplerID samplerID);
-	void BindTexture();
-	void Release();
-};
-						</p>
-					</div>
-				</div>
-				<!-- <div class="row">
-					<div class="col-md-12">
-						<h3></h3>
-						<p align="justify" style="font-size: 15px;">
-							
-						</p>
-					</div>
-				</div> -->
-				<!-- <div class="row">
-					<div class="col-md-6">
-						<h3></h3>
-						<p align="justify" style="font-size: 15px;">
-							
-						</p>
-					</div>
-					<div class="col-md-6">
-						<p align="justify" style="font-size: 15px;">
-							
-						</p>
-					</div>
-				</div> -->
 				<div class="row">
 					<div class="col-md-12">
 						<h3>Controls</h3>
 						<ul style="font-size:15px;">
-							<li>Use the <span class="glyphicon glyphicon-arrow-left"></span><span class="glyphicon glyphicon-arrow-up"></span><span class="glyphicon glyphicon-arrow-right"></span><span class="glyphicon glyphicon-arrow-down"></span> (Arrow keys) to move the camera on XZ plane.</li>
-							<li>Use <kbd>W</kbd>, <kbd>A</kbd>, <kbd>S</kbd> and <kbd>D</kbd> to move the pyramid on the XY plane.</li>
-							<li>Press <kbd>Q</kbd> and <kbd>E</kbd> to rotate the pyramid counter-clockwise or clockwise respectively.</li>
+							<li>Use the <span class="glyphicon glyphicon-arrow-left"></span><span class="glyphicon glyphicon-arrow-up"></span><span class="glyphicon glyphicon-arrow-right"></span><span class="glyphicon glyphicon-arrow-down"></span> (Arrow keys) to move the green selection box.</li>
+							<li>Press <kbd>SPACE</kbd> to interact with the selection box and perform an action.</li>
 							<li>Press <kbd>ESC</kbd> to exit the game.</li>
 						</ul>
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-md-12">
+						<h3>Description</h3>
+						<p align="justify" style="font-size: 15px;">
+							You control the green selection box with the help of the arrow keys. When the box is over a piece you ownand you press space, the piece gets selected. Now you can see the squares with possible moves for the piece highlighted in the same green color. To move the selected piece, move the box to the desired valid location, and press psace again. Now you see that the camera changes. It signals the end of your turn and the start of the other player's turn.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Some Limitations</h3>
+						<p align="justify" style="font-size: 15px;">
+							<ol>
+								<li>You can not capture the enemy's pieces (I know, this is the main goal of chess!)</li>
+								<li>As a result of (1.) you can not obviously win or lose!</li>
+								<li>No special moves such as castling or promoting a pawn can be performed.</li>
+								<li>No scoreboard(or any form of UI)</li>
+								<li>The black background needs to change!</li>
+							</ol>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h3>Tech Stuff</h3>
+						<p align="justify" style="font-size: 15px;">
+							The lack of gameplay features are compensated by the code features which were added. First of all, all the models seen in the scene, are modelled in Maya by me. This gave me an excellent opportunity to interact with the art tools which the artists use. As I went on with the modelling, I found out that Extrude tool was my best friend. All the models are results of multiple iterations of extruding a face and rescaling it into shape. In this way, a simple cylinder could turn into a rook! To make them look smooth, I applied the smooth tool on each of them. This increases the poly count (number of faces and vertices) on them and reduces any sharp edges. You can see the rook in Maya.
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p align="center" style="font-size: 15px;">
+							<img src="AssignmentFinal/rook.gif" width = 60% />
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p align="justify" style="font-size: 15px;">
+							In order to show off the models in game, I needed to add lighting. We had an extra class on the basics of lighting, and with that, I added Ambient, Diffused and Specular lighting. I also had to change the UV wrapping of the models, especially the chess board. The texture on the chessboard is a tiled texture with image repeating on each of the faces.<br />
+							To simplify the positioning of the objects into the scene, I created a SceneBuilder tool. This tool, reads data from a lua file, and then arranges the listed objects as per the data in the file. This file contains the path to mesh file, the path to material file, the position and the orientation of the object. This helped a lot with the setting up of the scene. However, this has some disadvantages.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>EAE6320</h3>
+						<p align="justify" style="font-size: 15px;">
+							This class was all about the writing good code and building a good pipeline for asset creation and loading. This class gave me the opportunities to try various tools, such as Git and Maya, which I was relatively new at till now. I started appriciating how John-Paul taught us the classes and had us do the writeups for the assignments. I learnt that these assignments, and learning new things in general is not only about coding. Writing about the concept and explaining the code helps you to understand more about that concept.<br />
+							I also had to learn good code organization in code itself and in the explorer. Having various almost independent systems in different projects, and creating multiple platform dependent implementations of any methods were some of the things I learnt about softare architecture.<br />
+							The main thing to learn from the class was the improtance of Data driven architecture and the importance of pre building the non-code data. We learnt to use binary files more effectively and the way they reduced the compile time significantly. I believe, if one learns how to minimize the compile time effectively, he has mastered the art of software engineering.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Stretch Goals</h3>
+						<p align="justify" style="font-size: 15px;">
+							There will be some updates to the game as I will continue to work on it during the holidays. Here are some stretch goals, which I will be crossing off as I finish them in the future. Here are the stretch goals in no particular order:
+							<ol>
+								<li>Capturing of pieces.</li>
+								<li>Win / Lose State.</li>
+								<li>Advanced Tactics.</li>
+								<li>UI.</li>
+								<li>Timer.</li>
+								<li>Logs of moves made.</li>
+								<li>Better color pallette.</li>
+								<li>Dynamic loading and destroying of objects.</li>
+								<li>Smooth lerp of the camera.</li>
+								<li>Dynamic Lighting.</li>
+								<li>Different cameras.</li>
+							</ol>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Final Note</h3>
+						<p align="justify" style="font-size: 15px;">
+							Watch out for updates to this page over here and make sure to report any bugs to snkulkarni92@gmail.com
+						</p>
+					</div>
+				</div>
+				<!-- <div class="row">
+					<div class="col-md-12">
+						<h3></h3>
+						<p align="justify" style="font-size: 15px;">
+							
+						</p>
+					</div>
+				</div> -->
+				<!-- <div class="row">
+					<div class="col-md-6">
+						<h3></h3>
+						<p align="justify" style="font-size: 15px;">
+							
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p align="justify" style="font-size: 15px;">
+							
+						</p>
+					</div>
+				</div> -->
+				
+				<div class="row">
 					<div class="col-md-6">
 						<blockquote class="blockquote" style="font-size: 15px;">
 							<h3>Time Estimate</h3>
 							<p align="justify" style="font-size: 15px;">
-								Reading: 1 hour<br />
-								Coding: 3 hours<br />
-								Debugging: 1 hour<br />
-								Writeup: 1 hour<br />
+								Modelling: 4 hours<br />
+								Coding: 15 hours<br />
+								Debugging: 3 hours<br />
+								Writeup: 2 hours<br />
 							</p>
 						</blockquote>
 					</div>
 					<div class="col-md-6">
 						<blockquote class="blockquote-reverse" style="font-size: 15px;">
 							<h3>Download Links</h3>
-							<a class="btn btn-default" href = 'Assignment13/Assignment13Direct3D.zip'>
+							<a class="btn btn-default" href = 'AssignmentFinal/ChessDirect3D.zip'>
 								<span class="glyphicon glyphicon-download"></span> Download Direct3D
 							</a>
 							<br />
-							<a class="btn btn-default" href = 'Assignment13/Assignment13OpenGL.zip'>
+							<a class="btn btn-default" href = 'AssignmentFinal/ChessOpenGL.zip'>
 								<span class="glyphicon glyphicon-download"></span> Download OpenGL
 							</a>
 						</blockquote>
