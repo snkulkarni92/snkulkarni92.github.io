@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="img/favicon.ico">
 		<title>About Me</title>
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic|Raleway:400,700|Play:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<style>
-		.main {
-			font-family: 'Exo' 'sans-serif';
-			font-size: 18px;
-		}
-		html {
-		  position: relative;
-		  min-height: 100%;
-		}
-		body {
-		  /* Margin bottom by footer height */
-		  margin-bottom: 70px;
-		}
-		#footer {
-		  position: absolute;
-		  bottom: 0;
-		  width: 100%;
-		  /* Set the fixed height of the footer here */
-		  height: 70px;
-		  background-color: #222222;
-		  margin-top: 20px;
-		}
-		a {
-			margin-top:20px;
-		}
-		h3 {
-			font-family: 'Raleway' 'sans-serif';
-		}
-		img {
-			border-radius: 50%;
-		}
-		.text-muted {
-			font-family: 'Raleway', 'sans-serif';
-			font-size: 12px;
-			text-align: center;
-		}
-/* 
-			font-family: 'Exo' 'sans-serif';
-			font-family: 'Raleway' 'sans-serif';
- */
+			html {
+				position: relative;
+				min-height: 100%;
+				
+			}
+			body {
+				/* Margin bottom by footer height */
+				margin-bottom: 70px;
+			}
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				/* Set the fixed height of the footer here */
+				height: 70px;
+				background-color: #222222;
+			}
+			body > .container {
+				padding: 70px 20px 0;
+				font-family: 'Exo', 'sans-serif';
+				font-size: 20px;
+			}
+			
+			h3 {
+				font-family: 'Play', 'sans-serif';
+			}
+			img {
+				border-radius: 50%;
+			}
+			.text-muted {
+				font-family: 'Raleway', 'sans-serif';
+				font-size: 12px;
+				text-align: center;
+			}
 		</style>
 	</head>
 
-	<body style="background-image: url('img/gray_jean.png') ;background-repeat: repeat">
+	<body style="background-image: url('img/old_moon.png') ;background-repeat: repeat">
 
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="font-family: 'Exo', 'sans-serif';">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,52 +67,96 @@
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
 						<li><a href="index.html">Home</a></li>
-						<li><a class="active" href="#">About</a></li>
+						<li class="active"><a href="about.html">About</a></li>
 						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a href="blog.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 			</div>
-		</div>
+		</nav>
 
-		<div class="container" style="margin-top:80px; padding-bottom: 20px;">
+		<div class="container">
 			<img width=150px; src='img/head.png' style="margin-bottom: -200px;margin-left:-50px">
-			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Saurabh Nitin Kulkarni</h1>
-			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:40px; font-family: 'Exo' 'sans-serif'">
+			<h1 style="font-family: 'Play', 'sans-serif'; text-align: right">Saurabh Nitin Kulkarni</h1>
+			<div class="container" style="background-color: #fff; border-radius: 7px; padding-top:40px; font-family: 'Exo' 'sans-serif'">
 				<blockquote class="blockquote-reverse">
-					<h3>Bio</h3>
-					<p>I am currently in my third semester in the graduate course in Entertainment Arts and Engineering at the University of Utah. I am in the Cohort 5 in the Engineering track. I completed my undergraduate in Comptuter Engineering from Pune Institute of Computer Technology, India</p>
-				</blockquote>
-				<blockquote>
 					<h3>Status Report</h3>
 					<p>
-					Age: 22 years<br>
-					City: Salt Lake City<br>
-					Country: USA<br>
-					Computer Languages: C, C++, C#, Python, Java<br>
-					Game Development Platforms: Unity, Unreal, CryEngine ModSDK, XNA (MonoGame)<br>
-					Web Technologies: HTML, CSS, JavaScript, jQuery, JSP, Django(Python web framework)<br>
+						Last Semester as Game Engineering Student in Entertainment Arts and Engineering, Univeristy of Utah.
 					</p>
 				</blockquote>
-				<blockquote class="blockquote-reverse">
-					<h3>Notable Achievements</h3>
+				<div class="row">
+					<div class="col-md-6">
+						<blockquote>
+							<h3>Programming Languages</h3>
+							<p>
+								C<br />
+								C++<br />
+								C#<br />
+								Lua<br />
+								Python<br />
+								Java<br />
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6">
+						<blockquote class="blockquote-reverse">
+							<h3>Game Engines</h3>
+							<p>
+								Unity<br />
+								Unreal Engine<br />
+								CryEngine ModSDK<br />
+								Monogame XNA<br />
+								Phaser<br /><br />
+							</p>
+						</blockquote>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<blockquote>
+							<h3>Skills</h3>
+							<p>
+								Unity Networking<br />
+								Unity Animations<br />
+								Scrum Process<br />
+								Rapid Prototyping<br />
+								Source Control Tools - SVN, Git<br />
+							</p>
+						</blockquote>
+					</div>
+					<div class="col-md-6">
+						<blockquote class="blockquote-reverse">
+							<h3>Web Technologies</h3>
+							<p>
+								HTML5, CSS<br />
+								JavScript<br />
+								jQuery<br />
+								JSP<br />
+								Django<br />
+							</p>
+						</blockquote>
+					</div>
+				</div>
+				<blockquote class="blockquote">
+					<h3>Interests</h3>
 					<p>
-					Active Member in PICT IEEE Student Branch since Fall'11<br>
-					Organiser and web designer for Credenz'12 - technical symposium held in PICT, Pune<br>
-					One of the 15 selected in India for Google Placement Procedure (gave three rounds of interviews)
-					</p>
-				</blockquote>
+						Games - Grand Strategy, Real Time Strategy, Multiplayer Online Battle Arena<br />
+						Reading - Fiction, Sci-Fi<br />
+						Soccer<br />
+						Music - Alt. Rock, EDM, J-Pop
 			</div>
 		</div><!-- /.container -->
 
-		<div id="footer">
-			<div class="container" style="margin-top:8px;">
-				<p class="text-muted">Hosted on <a href="http://www.github.com">GitHub</a><br>
+		<footer class="footer">
+		<div class="container" style="margin-top:8px;">
+			<p class="text-muted">Hosted on <a href="http://www.github.com">GitHub</a><br>
 				Site designed using <a href="http://www.getbootstrap.com">Twitter Bootstrap</a> and <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlighter</a><br>
 				Best Viewed in <a href="http://www.google.com/chrome">Google Chrome</a>
-				</p>
-			</div>
+			</p>
 		</div>
+	</footer>
 
 		<!-- Bootstrap core JavaScript
 		================================================== -->

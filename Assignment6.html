@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Assignment 6</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="img/favicon.ico">
+		<title>Binary Files</title>
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic|Raleway:400,700|Play:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<style>
-		.main {
-			font-family: 'Exo' 'sans-serif';
-			font-size: 18px;
-		}
-		html {
-		  position: relative;
-		  min-height: 100%;
-		}
-		body {
-		  /* Margin bottom by footer height */
-		  margin-bottom: 70px;
-		}
-		#footer {
-		  position: absolute;
-		  bottom: 0;
-		  width: 100%;
-		  /* Set the fixed height of the footer here */
-		  height: 70px;
-		  background-color: #222222;
-		  margin-top: 20px;
-		}
-		a {
-			margin-top:20px;
-		}
-		h3 {
-			font-family: 'Raleway' 'sans-serif';
-		}
-		img {
-		}
-		.text-muted {
-			font-family: 'Raleway', 'sans-serif';
-			font-size: 12px;
-			text-align: center;
-		}
-/* 
-			font-family: 'Exo' 'sans-serif';
-			font-family: 'Raleway' 'sans-serif';
- */
+			html {
+				position: relative;
+				min-height: 100%;
+				
+			}
+			body {
+				/* Margin bottom by footer height */
+				margin-bottom: 70px;
+			}
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				/* Set the fixed height of the footer here */
+				height: 70px;
+				background-color: #222222;
+			}
+			body > .container {
+				padding: 70px 20px 0;
+				font-family: 'Exo', 'sans-serif';
+				font-size: 20px;
+			}
+			
+			h3 {
+				font-family: 'Play', 'sans-serif';
+			}
+			.container > img {
+				border-radius: 50%;
+			}
+			.text-muted {
+				font-family: 'Raleway', 'sans-serif';
+				font-size: 12px;
+				text-align: center;
+			}
 		</style>
 	</head>
 
 	<body style="background-image: url('img/old_moon.png') ;background-repeat: repeat">
 
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="font-family: 'Exo', 'sans-serif';">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -65,15 +69,17 @@
 						<li><a href="index.html">Home</a></li>
 						<li><a href="about.html">About</a></li>
 						<li><a href="portfolio.html">Portfolio</a></li>
-						<li><a class="active" href="#">Contact</a></li>
+						<li class="active"><a href="blog.html">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 			</div>
-		</div>
+		</nav>
 
-		<div class="container" style="margin-top:80px; padding-bottom: 20px;">
-			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Assignment 06</h1>
-			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:50px; padding-left:60px; padding-right: 60px; font-family: 'Exo' 'sans-serif'">
+		<div class="container">
+			<img width=150px; src='img/blog.jpg' style="margin-bottom: -200px;margin-left:-50px">
+			<h1 style="font-family: 'Play', 'sans-serif'; text-align: right">Binary Files</h1>
+			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:110px; padding-left:60px; padding-right: 60px; font-family: 'Exo' 'sans-serif'">
 				<div class="row">
 					<div class="col-md-6">
 						<h3>Assignment 06</h3>
@@ -92,7 +98,7 @@
 						<h3>Binary Mesh</h3>
 						<p align="justify" style="font-size: 15px;">
 							As mentioned previously, we aim to make the process of building and loading meshes efficient. Using a binary file instead of a normal text file makes the job a lot more efficient. Some of the advantages of using a binary file are: <br />
-							<ol>
+							<ol style="font-size: 15px;">
 								<li>Binary files are easier to read and write through code. It takes time to convert a 32 bit integer to characters. But it takes almost no time to store the same 32 bit integer into a binary format.</li>
 								<li>Binary files are smaller. In text files, each character is one byte. But in binary, a large amount of data can be stored in less bytes.</li>
 								<li>Binary files can be used as intermediate files. Binary files can be hard to read and comprehend, but they should not be necessarily seen by humans.</li>
@@ -122,7 +128,7 @@
 						<p align="justify" style="font-size: 15px;">
 						The order I chose, was:
 						</p>
-							<ol>
+							<ol style="font-size: 15px;">
 								<li>Number of vertices</li>
 								<li>Number of indices</li>
 								<li>Vertices</li>
@@ -138,7 +144,7 @@
 						<h3>Binary files and Platforms</h3>
 						<p align="justify" style="font-size: 15px;">
 							Every platform must have a version of the binary file. So, the square mesh file for Direct3D will be different than that for the OpenGL. The reasons for that are:
-							<ol>
+							<ol style="font-size: 15px;">
 								<li>The primary goal of using binary files is to increase the efficiency in the building and loading of the mesh. They should be able to load &quotin place&quot without any processing.</li>
 								<li>All the changes to be done to the file should be done before building them, not after during runtime.</li>
 								<li>Even though there will be different files, we will not be building the GL mesh file when building for Direct3D. So the number of files will not technically change.</li>
@@ -151,7 +157,7 @@
 						<h3>Implementations</h3>
 						<p align="justify" style="font-size: 15px;">
 							Writing to File<br />
-							<ol>
+							<ol style="font-size: 15px;">
 								<li>Open File - <code>fopen_s(&oFile, m_path_target, "wb");</code></li>
 								<li>Write Data - <code><br/>
 									fwrite(&mVertexCount, sizeof(uint32_t), 1, oFile);<br/>
@@ -164,7 +170,7 @@
 							</ol>
 							<br />
 							Reading from File<br />
-							<ol>
+							<ol style="font-size: 15px;">
 								<li>Open File - <code>fopen_s(&iFile, i_path, "rb");</code></li>
 								<li>Calculate File Size - <code><br />
 									fseek(iFile, 0, SEEK_END);<br />
@@ -196,7 +202,7 @@
 						<p align="justify" style="font-size: 15px;">
 							The effect class encapsulates the shaders used in Direct3D and OpenGL. The purpose of doing this is with the final goal to make Graphics.cpp platform independent. After moving the code into the class, the Graphics.cpp files are now starting to look more similar.	With some future changes, they can be combined into one platform independent file. I guess the final requirement is also true. It feels great having to change code to make it simpler yet so much complex with a lot of functionality.<br />
 							<h4>Implementations</h4>
-							<ol>
+							<ol style="font-size: 15px;">
 								<li>Creating new Effect - <code>s_effect = new Effect();</code>
 								<li>Initializing the effect - This will have the file name in the future assignment just like the mesh. <code><br/>
 									s_effect->Initialize(context);</code>

@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="img/favicon.ico">
 		<title>Portfolio</title>
 		<!-- Bootstrap core CSS -->
-		<script type="text/javascript" src="scripts/shCore.js"></script>
-		<script type="text/javascript" src="scripts/shBrushCpp.js"></script>
-		<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Exo:400,700,400italic,700italic|Raleway:400,700|Play:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-		<script type="text/javascript">SyntaxHighlighter.all();</script>
 		<style>
-		.main {
-			font-family: 'Exo' 'sans-serif';
-			font-size: 18px;
-		}
-		html {
-		  position: relative;
-		  min-height: 100%;
-		}
-		body {
-		  /* Margin bottom by footer height */
-		  margin-bottom: 70px;
-		}
-		#footer {
-		  position: absolute;
-		  bottom: 0;
-		  width: 100%;
-		  /* Set the fixed height of the footer here */
-		  height: 70px;
-		  background-color: #222222;
-		  margin-top: 20px;
-		}
-		a {
-			margin-top:20px;
-		}
-		h3 {
-			font-family: 'Raleway' 'sans-serif';
-		}
-		.text-muted {
-			font-family: 'Raleway', 'sans-serif';
-			font-size: 12px;
-			text-align: center;
-		}
-/* 
-			font-family: 'Exo' 'sans-serif';
-			font-family: 'Raleway' 'sans-serif';
- */
+			html {
+				position: relative;
+				min-height: 100%;
+				
+			}
+			body {
+				/* Margin bottom by footer height */
+				margin-bottom: 70px;
+			}
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				/* Set the fixed height of the footer here */
+				height: 70px;
+				background-color: #222222;
+			}
+			body > .container {
+				padding: 70px 20px 0;
+				font-family: 'Exo', 'sans-serif';
+			}
+			
+			h2 > small {
+				font-family: 'Raleway', 'sans-serif';
+			}
+			
+			h3, h2, h1 {
+				font-family: 'Play', 'sans-serif';
+			}
+			img {
+				border-radius: 50%;
+			}
+			.text-muted {
+				font-family: 'Raleway', 'sans-serif';
+				font-size: 12px;
+				text-align: center;
+			}
+			p {
+				
+			}
 		</style>
 	</head>
 
-	<body style="background-image: url('img/gray_jean.png') ;background-repeat: repeat">
+	<body style="background-image: url('img/old_moon.png') ;background-repeat: repeat">
 
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="font-family: 'Exo', 'sans-serif';">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -66,134 +74,142 @@
 					<ul class="nav navbar-nav">
 						<li><a href="index.html">Home</a></li>
 						<li><a href="about.html">About</a></li>
-						<li><a class="active" href="#">Portfolio</a></li>
+						<li class="active"><a href="portfolio.html">Portfolio</a></li>
+						<li><a href="blog.html">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 			</div>
-		</div>
+		</nav>
 
-		<div class="container" style="margin-top:80px; padding-bottom: 20px;">
+		<div class="container">
 			<img width=150px; src='img/portfolio.jpg' style="margin-bottom: -200px; margin-left:-50px; border-radius: 50%;">
 			<h1 style="font-family: 'Play' 'sans-serif'; text-align: right">Portfolio</h1>
-			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:110px; font-family: 'Exo' 'sans-serif'">
-				<blockquote><h3>Games</h3></blockquote>
+			<div class="container" style="background-color: #ffffff; border-radius: 7px; padding-top:110px; font-family: 'Exo', 'sans-serif'; font-size: 17px">
+				<blockquote><h2>Games</h2></blockquote>
 				<div class="container" style="padding-right: 45px;">
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
-									Mean Peace
-								</a>
-							</div>
-							<div id="collapseSix" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p align="justify">
-										A two-player game of Peace vs. Violence. One player needs to survive while the other player needs to kill the minions then his opponents before the timer expires. One player plays with the controller while the other uses the keyboard and mouse. <br /><br />
-										<em>Engine:</em> Monogame (C#)<br />
-										<em>Role:</em> Networking / Multiplayer, Gameplay Balancing<br /><br />
-									</p>
-									<center><iframe width=90% height=250px src="//www.youtube.com/embed/_c-7BrbXF9Q?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-									</center>
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-md-4">
+							<center><iframe width=90% height=250px src="//www.youtube.com/embed/91F56gt-8Zw?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+							</center>
 						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-									Controversy in India
-								</a>
-							</div>
-							<div id="collapse7" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p align="justify">
-										Based on the arcade game Dig Dug, you control a virus who wants to take his revenge on cows. To win, you must eat all the neurons in the cow's brain and avoid anti-virus bodies. <br /><br />
-										<em>Engine:</em> Phaser (HTML5)<br />
-										<em>Role:</em> Spawning of Neurons, Digging Mechanic, Gameplay Balancing, End States<br /><br />
-									</p>
-									<center><iframe width=90% height=250px src="//www.youtube.com/embed/W4XVOk9p1MU?rel=0&amp;showinfo=0" frameborder="0" frameborder="0" allowfullscreen></iframe>
-									<a class="btn btn-default" href="games/Prototype2/index.html">
-										<span class="glyphicon glyphicon-play-circle"></span> Play
-									</a>
-									</center>
-								</div>
-							</div>
+						<div class="col-md-8">
+							<h2>Maui<br />
+								<small>
+									- Third Person, Action Adventure (Work in Progress) - <a href="http://www.kokuagames.com">Website</a>
+								</small>
+							</h2>
+							<p align="justify">
+								<em><strong>Engine:</strong> Monogame (C#)</em><br />
+								<em><strong>Role:</strong> Networking / Multiplayer, Gameplay Balancing</em><br /><br />
+								Maui is a game to gain the favor of the Hawaiian gods. It is an extension of a Hawaiian legend about forbidden love. It is a Zelda-inspired game featuring an innovative Stat-Grid mechanic to change your stats on the fly.<br /><br />
+							</p>
 						</div>
 					</div>
 				</div>
+				<blockquote><h2>Solo Projects</h2></blockquote>
 				<div class="container" style="padding-right: 45px;">
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-									Ebola Clinic
-								</a>
-							</div>
-							<div id="collapse8" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p align="justify">
-										A game about Ebola Treatment Unit in West Africa, with elements of resource management. Made as a Serious Game, once you are out of funds, links for actual charities are shown to the player. <br /><br />
-										<em>Engine:</em> Unity (C#)<br />
-										<em>Role:</em> UI, Movement, Gameplay<br /><br />
-									</p>
-									<center><iframe width=90% height=250px src="//www.youtube.com/embed/Wow5mejY7u4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-									<a class="btn btn-default" href="https://dl.dropboxusercontent.com/u/93744228/Ebola%20Clinic/Ebola%20Clinic.html">
-										<span class="glyphicon glyphicon-play-circle"></span> Play
-									</a>
-									</center>
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>C++ Game Engine (WIP)<br />
+								<small>
+									<a href = "https://github.com/snkulkarni92/CPPGameEngine">
+									- Repository</a>
+								</small>
+							</h2>
+							<p align="justify">
+								<em><strong>Languages:</strong> C++, Lua</em><br />
+								It is a 3D game engine with a rendering pipeline, custom memory manager, Maya exporter, specular and diffused lighting. Future features are a 3D collision system, Networking among others.
+							</p>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-									Troncano
-								</a>
-							</div>
-							<div id="collapse9" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p align="justify">
-										A first person platformer game in a fictional volcano, you have powers to push and pull yourself to all the platforms. Your objective is to collect all the gems and avoid the constantly rising and falling lava. <br /><br />
-										<em>Engine:</em> Unreal Engine<br />
-										<em>Role:</em> Networking, Push / Pull Mechanic, Rising and falling of Lava <br /><br />
-									</p>
-									<center><iframe width=90% height=250px src="//www.youtube.com/embed/rsnC9YVkppc?rel=0&amp;showinfo=0" frameborder="0" frameborder="0" allowfullscreen></iframe>
-									<a class="btn btn-default" href = "https://www.dropbox.com/s/d8dvnbqyfd35g56/Troncano.zip?dl=0">
-										<span class="glyphicon glyphicon-download"></span> Download
-									</a>
-									</center>
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>Experimental Games (WIP)<br />
+								<small>
+									<a href = "experiments.html">
+									- Website</a>
+								</small>
+							</h2>
+							<p align="justify">
+								A series of one week prototypes centered around a theme. The games try to prove a hypothesis about the theme.
+							</p>
 						</div>
 					</div>
 				</div>
-				<blockquote><h3>Level Design</h3></blockquote>
+				<blockquote><h2>Rapid Prototypes</h2></blockquote>
 				<div class="container" style="padding-right: 45px;">
-					<div class="col-md-6">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-									Level for Crysis 2 (Virtual Worlds Final Assignment)
-								</a>
-							</div>
-							<div id="collapseOne" class="panel-collapse collapse">
-								<div class="panel-body">
-									<p align="justify">
-										A level designed for Crysis 2 using CryEngine ModSDK. The level design was focused around making meaningful choices while completing the mission which was not present in the original game (it gave you tactical options to help finishing the mission). Every choice has equal advantages and disadvantages. Which choice to select will depend on the playstyle.
-									</p>
-									<center><iframe width=90% height=250px src="//www.youtube.com/embed/lOGAlL2qqq8?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-									</center>	
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-md-4">
+							<center><iframe width=90% height=250px src="//www.youtube.com/embed/rsnC9YVkppc?rel=0&amp;showinfo=0"frameborder="0" allowfullscreen></iframe>
+							</center>
+						</div>
+						<div class="col-md-8">
+							<h2>Troncano<br/><small> - First Person, Platformer with a Twist - <a href = "https://www.dropbox.com/s/d8dvnbqyfd35g56/Troncano.zip?dl=0">Download</a></small></h2>
+							<p align="justify">
+								<em><strong>Engine:</strong> Unreal Engine</em><br />
+								<em><strong>Role:</strong> Networking, Push / Pull Mechanic, Rising and falling of Lava</em><br /><br />
+								A first person platformer game in a fictional volcano, you have powers to push and pull yourself to all the platforms. Your objective is to collect all the gems and avoid the constantly rising and falling lava. <br /><br />
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<h2>Ebola Clinic<br /><small> - 3D, Resource Management, Serious Game<!-- - <a href = "https://dl.dropboxusercontent.com/u/93744228/Ebola%20Clinic/Ebola%20Clinic.html">Download</a--></small></h2>
+							<p align="justify">
+								<em><strong>Engine:</strong> Unity (C#)</em><br />
+								<em><strong>Role:</strong> UI, Movement, Gameplay</em><br /><br />
+								A game about Ebola Treatment Unit in West Africa, with elements of resource management. Made as a Serious Game, once you are out of funds, links for actual charities are shown to the player. <br /><br />
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<center><iframe width=90% height=250px src="//www.youtube.com/embed/W4XVOk9p1MU?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+							</center>
+						</div>
+						<div class="col-md-8">
+							<h2>Controversy in India<br /><small> - 2D Arcade, Browser Based Game - <a href = "games/Prototype2/index.html">Play</a></small></h2>
+							<p align="justify">
+								<em><strong>Engine:</strong> Phaser (HTML5)</em><br />
+								<em><strong>Role:</strong> Spawning of Neurons, Digging Mechanic, Gameplay Balancing, End States</em><br /><br />
+								Based on the arcade game Dig Dug, you control a virus who wants to take his revenge on cows. To win, you must eat all the neurons in the cow's brain and avoid anti-virus bodies. <br /><br />
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<h2>Mean Peace<br /><small> - Two Player, Assymetric</small></h2>
+							<p align="justify">
+								<em><strong>Engine:</strong> Monogame (C#)</em><br />
+								<em><strong>Role:</strong> Networking / Multiplayer, Gameplay Balancing</em><br />
+								A two-player game of Peace vs. Violence. One player needs to survive while the other player needs to kill the minions then his opponents before the timer expires. One player plays with the controller while the other uses the keyboard and mouse. <br /><br />
+							</p>
+						</div>
+						<div class="col-md-4">
+							<center><iframe width=90% height=250px src="//www.youtube.com/embed/_c-7BrbXF9Q?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+							</center>
+						</div>
+					</div>
+				</div>
+				
+				<blockquote><h2>Level Design</h2></blockquote>
+				<div class="container" style="padding-right: 45px;">
+					<div class="row">
+						<div class="col-md-4">
+							<center><iframe width=90% height=250px src="//www.youtube.com/embed/lOGAlL2qqq8?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+							</center>
+						</div>
+						<div class="col-md-8">
+							<h2>Level for Crysis 2<br /><small> - Virtual Worlds Final Assignment</small></h2>
+								<p align="justify">
+									A level designed for Crysis 2 using CryEngine ModSDK. The level design was focused around making meaningful choices while completing the mission which was not present in the original game (it gave you tactical options to help finishing the mission). Every choice has equal advantages and disadvantages. Which choice to select will depend on the playstyle.
+								</p>	
 						</div>
 					</div>
 				</div>
 					
-				<blockquote><h3>Programs</h3></blockquote>
+				<!--blockquote><h>Programs</h3></blockquote>
 					<div class="container" style="padding-right: 45px;">
 						<div class="col-md-6">
 						<div class="panel panel-default">
@@ -272,24 +288,15 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<blockquote><h3>Undergraduate Thesis Project</h3></blockquote>
+				</div-->
+				<blockquote><h2>Undergraduate Thesis Project</h2></blockquote>
 				<div class="container" style="padding-right: 60px;">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-								Sniffnet
-							</a>
-						</div>
-						<div id="collapseFive" class="panel-collapse collapse">
-							<div class="panel-body">
-								This project was done as per the fourth year syllabus for B.E. Computer Engineering.<br>
-								<strong>Synopsis of the project</strong><br>
-								&nbsp;&nbsp;&nbsp;&nbsp;Data analysis and report generation has become an integral part when it comes to business intelligence. To generate analytics, a web service provider needs to process data which is coming in and going out from the server. Before Cloud computing, capturing of data was done on premise using dedicated hardware. Post Cloud era, service providers are moving their servers in the Cloud. Though there is a reduction in maintenance cost, there is a lack of transparency. Web service providers need to modify the application code to incorporate capturing data and making sense out of it. One solution is to run network monitoring tools like tcpdump or WireShark. However, these tools use up a significant amount of memory thus leaving less memory available for critical user processes to run. A novel solution is proposed here for monitoring network activity of VMs which overcomes the disadvantages of previous solutions. <br>
-								&nbsp;&nbsp;&nbsp;&nbsp;The system uses Software Defined Networking (SDN) approach by utilizing Open vSwitch (OVS), an open-source virtual network switch. The switch is used to capture network flow and store it in a network-mounted file system (NFS). For fast storage and retrieval, data is stored in compressed form using LZO compression algorithm and indexed using bitmap indexing technique. Storing data in this way helps perform analysis and report generation for providing transparency to the Cloud tenants. The user interacts with the system through Software as a Service (SaaS) interface by firing queries specific to the data that is sought. Recorded network traffic can be viewed which facilitates its analysis.
-								<br><br>
-								Contribution to Project: UI Design, Indexing of Captured Packets
-							</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>Sniffnet<br /><small> - Synopsis</small></h2>
+							<p align="justify">
+								The software developed monitors network activity of Virtual Machines which overcomes some of the disadvantages of previous methods of data analytics in a cloud environment. The software uses Software Defined Networking (SDN) approach by utilizing Open vSwitch (OVS), an open-source virtual network switch. The switch is used to capture network flow and store it in a network-mounted file system (NFS). For fast storage and retrieval, data is stored in compressed form using LZO compression algorithm and indexed using bitmap indexing technique. Storing data in this way helps perform analysis and report generation for providing transparency to the Cloud tenants. The user interacts with the system through Software as a Service (SaaS) interface by firing queries specific to the data that is sought. Recorded network traffic can be viewed which facilitates its analysis.
+							</p>
 						</div>
 					</div>
 				</div>
